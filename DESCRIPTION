@@ -1,7 +1,7 @@
 Package: roxytest
 Type: Package
 Title: Various Tests with 'roxygen2'
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: c(
   person(given = "Mikkel Meyer", family = "Andersen", 
          email = "mikl@math.aau.dk", role = c("aut", "cre")),
@@ -17,11 +17,11 @@ Depends: R (>= 2.10)
 Suggests: testthat (>= 2.1.0), tinytest (>= 1.1.0), knitr, rmarkdown
 BugReports: https://github.com/mikldk/roxytest/issues
 Encoding: UTF-8
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-05-29 10:07:43 UTC; mikl
+Packaged: 2023-01-11 10:40:33 UTC; mikl
 Author: Mikkel Meyer Andersen [aut, cre],
   Ege Rubak [ctb]
 Repository: CRAN
-Date/Publication: 2020-06-03 16:30:06 UTC
+Date/Publication: 2023-01-11 15:50:02 UTC

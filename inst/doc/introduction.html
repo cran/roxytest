@@ -14,72 +14,103 @@
 
 <title>Introduction</title>
 
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {  }
+{ }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -88,13 +119,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -102,6 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
+
 
 
 
@@ -301,34 +340,59 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(roxytest)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(roxytest)</span></code></pre></div>
 <p>There are a number of roclets included:</p>
 <ul>
-<li><code>testthat_roclet</code>: Write <a href="https://testthat.r-lib.org/"><code>testthat</code></a> tests in the <a href="https://roxygen2.r-lib.org/"><code>roxygen2</code></a> documentation
+<li><code>testthat_roclet</code>: Write <a href="https://testthat.r-lib.org/"><code>testthat</code></a> tests in
+the <a href="https://roxygen2.r-lib.org/"><code>roxygen2</code></a>
+documentation
 <ul>
 <li><code>@tests</code>: Generate test skeletons</li>
-<li><code>@testexamples</code>: Generate test skeletons with <code>@examples</code> included first such that e.g. variables can be reused</li>
+<li><code>@testexamples</code>: Generate test skeletons with
+<code>@examples</code> included first such that e.g. variables can be
+reused</li>
 </ul></li>
-<li><code>tinytest_roclet</code>: Write <a href="https://cran.r-project.org/package=tinytest"><code>tinytest</code></a> tests in the <a href="https://roxygen2.r-lib.org/"><code>roxygen2</code></a> documentation
+<li><code>tinytest_roclet</code>: Write <a href="https://cran.r-project.org/package=tinytest"><code>tinytest</code></a>
+tests in the <a href="https://roxygen2.r-lib.org/"><code>roxygen2</code></a>
+documentation
 <ul>
 <li><code>@tests</code>: Generate test skeletons</li>
-<li><code>@testexamples</code>: Generate test skeletons with <code>@examples</code> included first such that e.g. variables can be reused</li>
+<li><code>@testexamples</code>: Generate test skeletons with
+<code>@examples</code> included first such that e.g. variables can be
+reused</li>
 </ul></li>
-<li><code>param_roclet</code>: Checks for consistency in documentation of parameters (too many/too few)</li>
-<li><code>return_roclet</code>: Checks if <code>@export</code>ed functions has <code>@return</code> documentation (possibly just <code>@return None</code>)</li>
-<li><code>examples_roclet</code>: Checks if <code>@export</code>ed functions has <code>@examples</code> documentation</li>
+<li><code>param_roclet</code>: Checks for consistency in documentation
+of parameters (too many/too few)</li>
+<li><code>return_roclet</code>: Checks if <code>@export</code>ed
+functions has <code>@return</code> documentation (possibly just
+<code>@return None</code>)</li>
+<li><code>examples_roclet</code>: Checks if <code>@export</code>ed
+functions has <code>@examples</code> documentation</li>
 </ul>
-<p>To use the package in your own package you do not need to add any additional dependencies in your package’s <code>DESCRIPTION</code> file apart from the usual <code>Suggests: testthat</code> that is required for testing with <code>testthat</code> or the <code>Suggests: tinytest</code> that is required for testing with <code>tinytest</code>. (If you only use <code>param_roclet</code>, <code>return_roclet</code> or <code>examples_roclet</code> you do not need to add anything to <code>Suggests</code>.)</p>
+<p>To use the package in your own package you do not need to add any
+additional dependencies in your package’s <code>DESCRIPTION</code> file
+apart from the usual <code>Suggests: testthat</code> that is required
+for testing with <code>testthat</code> or the
+<code>Suggests: tinytest</code> that is required for testing with
+<code>tinytest</code>. (If you only use <code>param_roclet</code>,
+<code>return_roclet</code> or <code>examples_roclet</code> you do not
+need to add anything to <code>Suggests</code>.)</p>
 <pre><code>Suggests:
   testthat # or tinytest</code></pre>
-<p>However, any developer working on your package needs to have <code>roxytest</code> installed to be able to successfully run <code>roxygen2::roxygenise()</code> (or <code>devtools::document()</code>). For this reason you may consider adding <code>roxytest</code> to <code>Suggests</code>, but this is not required.</p>
+<p>However, any developer working on your package needs to have
+<code>roxytest</code> installed to be able to successfully run
+<code>roxygen2::roxygenise()</code> (or
+<code>devtools::document()</code>). For this reason you may consider
+adding <code>roxytest</code> to <code>Suggests</code>, but this is not
+required.</p>
 <div id="testthat-roclet" class="section level3">
 <h3><code>testthat</code> roclet</h3>
-<p>Add the following lines to your package’s <code>DESCRIPTION</code> file (along with <code>Suggests: testthat</code>):</p>
+<p>Add the following lines to your package’s <code>DESCRIPTION</code>
+file (along with <code>Suggests: testthat</code>):</p>
 <pre><code>Roxygen: list(roclets = c(&quot;namespace&quot;, &quot;rd&quot;, &quot;roxytest::testthat_roclet&quot;))</code></pre>
 <p>(Or make appropriate changes to obtain similar results.)</p>
 <p>Then run the following:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">roxygen2<span class="op">::</span><span class="kw">roxygenise</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>roxygen2<span class="sc">::</span><span class="fu">roxygenise</span>()</span></code></pre></div>
 <p>Similarly for the other roclets.</p>
 </div>
 <div id="multiple-roclets" class="section level3">
@@ -340,93 +404,107 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
                           &quot;roxytest::return_roclet&quot;))</code></pre>
 <p>(Or make appropriate changes to obtain similar results.)</p>
 <p>Then run the following:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">roxygen2<span class="op">::</span><span class="kw">roxygenise</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>roxygen2<span class="sc">::</span><span class="fu">roxygenise</span>()</span></code></pre></div>
 </div>
 <div id="examples" class="section level2">
 <h2>Examples</h2>
-<p>Below we show based on <code>testthat</code>, but it is the same for <code>tinytest</code> except the output which then happens at <code>inst/tinytest</code> without <code>contest()</code> and <code>testthat()</code> boilerplate.</p>
+<p>Below we show based on <code>testthat</code>, but it is the same for
+<code>tinytest</code> except the output which then happens at
+<code>inst/tinytest</code> without <code>contest()</code> and
+<code>testthat()</code> boilerplate.</p>
 <div id="testthat-roclet-1" class="section level3">
 <h3><code>testthat</code> roclet</h3>
 <p>As mentioned above, there are two tags available:</p>
 <ul>
 <li><code>@tests</code>: Generate test skeletons</li>
-<li><code>@testexamples</code>: Generate test skeletons with <code>@examples</code> included first such that e.g. variables can be reused</li>
+<li><code>@testexamples</code>: Generate test skeletons with
+<code>@examples</code> included first such that e.g. variables can be
+reused</li>
 </ul>
 <p>Note that both can be used at the same time.</p>
-<p>We first demonstrate <code>@tests</code> and afterwards <code>@testexamples</code>.</p>
+<p>We first demonstrate <code>@tests</code> and afterwards
+<code>@testexamples</code>.</p>
 <div id="tests-tag" class="section level4">
 <h4><code>@tests</code> tag</h4>
-<p>For example, if the file <code>R/functions.R</code> contains this code (from <a href="https://github.com/mikldk/roxytestdemo">roxytestdemo</a>):</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="co">#&#39; A function to do x</span></a>
-<a class="sourceLine" id="cb7-2" title="2"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&#39; @param x A number</span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&#39; @tests </span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&#39; expect_equal(foo(2), sqrt(2))</span></a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&#39; expect_error(foo(&quot;a string&quot;))</span></a>
-<a class="sourceLine" id="cb7-8" title="8"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb7-9" title="9"><span class="co">#&#39; @return something</span></a>
-<a class="sourceLine" id="cb7-10" title="10">foo &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb7-11" title="11">  <span class="kw">return</span>(<span class="kw">sqrt</span>(x))</a>
-<a class="sourceLine" id="cb7-12" title="12">}</a>
-<a class="sourceLine" id="cb7-13" title="13"></a>
-<a class="sourceLine" id="cb7-14" title="14"><span class="co">#&#39; A function to do y</span></a>
-<a class="sourceLine" id="cb7-15" title="15"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb7-16" title="16"><span class="co">#&#39; @param x Character vector</span></a>
-<a class="sourceLine" id="cb7-17" title="17"><span class="co">#&#39; @param y Character vector</span></a>
-<a class="sourceLine" id="cb7-18" title="18"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb7-19" title="19"><span class="co">#&#39; @tests </span></a>
-<a class="sourceLine" id="cb7-20" title="20"><span class="co">#&#39; expect_equal(bar(&quot;A&quot;, &quot;B&quot;), paste(&quot;A&quot;, &quot;B&quot;, sep = &quot;/&quot;))</span></a>
-<a class="sourceLine" id="cb7-21" title="21"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb7-22" title="22"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb7-23" title="23">bar &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb7-24" title="24">  <span class="kw">paste0</span>(x, <span class="st">&quot;/&quot;</span>, y)</a>
-<a class="sourceLine" id="cb7-25" title="25">}</a></code></pre></div>
-<p>Then <code>roxygen2::roxygenise()</code> will generate (with the <code>testthat_roclet</code> roclet) the file <code>tests/testthat/test-roxytest-tests-functions.R</code> with this content:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co"># Generated by roxytest: Do not edit by hand!</span></a>
-<a class="sourceLine" id="cb8-2" title="2"></a>
-<a class="sourceLine" id="cb8-3" title="3"><span class="kw">context</span>(<span class="st">&quot;File R/functions.R: @tests&quot;</span>)</a>
-<a class="sourceLine" id="cb8-4" title="4"></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="kw">test_that</span>(<span class="st">&quot;Function foo() @ L10&quot;</span>, {</a>
-<a class="sourceLine" id="cb8-6" title="6">  <span class="kw">expect_equal</span>(<span class="kw">foo</span>(<span class="dv">2</span>), <span class="kw">sqrt</span>(<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb8-7" title="7">  <span class="kw">expect_error</span>(<span class="kw">foo</span>(<span class="st">&quot;a string&quot;</span>))</a>
-<a class="sourceLine" id="cb8-8" title="8">})</a>
-<a class="sourceLine" id="cb8-9" title="9"></a>
-<a class="sourceLine" id="cb8-10" title="10"></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="kw">test_that</span>(<span class="st">&quot;Function bar() @ L23&quot;</span>, {</a>
-<a class="sourceLine" id="cb8-12" title="12">  <span class="kw">expect_equal</span>(<span class="kw">bar</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="kw">paste</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;/&quot;</span>))</a>
-<a class="sourceLine" id="cb8-13" title="13">})</a></code></pre></div>
+<p>For example, if the file <code>R/functions.R</code> contains this
+code (from <a href="https://github.com/mikldk/roxytestdemo">roxytestdemo</a>):</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; A function to do x</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @tests </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; expect_equal(foo(2), sqrt(2))</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; expect_error(foo(&quot;a string&quot;))</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return something</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>foo <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sqrt</span>(x))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; A function to do y</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x Character vector</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param y Character vector</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @tests </span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; expect_equal(bar(&quot;A&quot;, &quot;B&quot;), paste(&quot;A&quot;, &quot;B&quot;, sep = &quot;/&quot;))</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>bar <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(x, <span class="st">&quot;/&quot;</span>, y)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Then <code>roxygen2::roxygenise()</code> will generate (with the
+<code>testthat_roclet</code> roclet) the file
+<code>tests/testthat/test-roxytest-tests-functions.R</code> with this
+content:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generated by roxytest: Do not edit by hand!</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;File R/functions.R: @tests&quot;</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;Function foo() @ L10&quot;</span>, {</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">foo</span>(<span class="dv">2</span>), <span class="fu">sqrt</span>(<span class="dv">2</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">foo</span>(<span class="st">&quot;a string&quot;</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;Function bar() @ L23&quot;</span>, {</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">bar</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">paste</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;/&quot;</span>))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 </div>
 <div id="testexamples-tag" class="section level4">
 <h4><code>@testexamples</code> tag</h4>
-<p>For example, if the file <code>R/functions.R</code> contains this code (from <a href="https://github.com/mikldk/roxytestdemo">roxytestdemo</a>):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">#&#39; A function to do w</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&#39; @param x A number</span></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&#39; @examples </span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&#39; x &lt;- 2</span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&#39; foo(x)</span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&#39; @testexamples</span></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&#39; expect_equal(foo(x), foo(2))</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&#39; @return something</span></a>
-<a class="sourceLine" id="cb9-13" title="13">foo2 &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
-<a class="sourceLine" id="cb9-14" title="14">  <span class="kw">return</span>(<span class="kw">sqrt</span>(x))</a>
-<a class="sourceLine" id="cb9-15" title="15">}</a></code></pre></div>
-<p>Then <code>roxygen2::roxygenise()</code> will generate (with the <code>testthat_roclet</code> roclet) the file <code>tests/testthat/test-roxytest-testexamples-functions.R</code> with this content:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co"># Generated by roxytest: Do not edit by hand!</span></a>
-<a class="sourceLine" id="cb10-2" title="2"></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="kw">context</span>(<span class="st">&quot;File R/functions.R: @testexamples&quot;</span>)</a>
-<a class="sourceLine" id="cb10-4" title="4"></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="kw">test_that</span>(<span class="st">&quot;Function foo2() @ L13&quot;</span>, {</a>
-<a class="sourceLine" id="cb10-6" title="6">  </a>
-<a class="sourceLine" id="cb10-7" title="7">  x &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb10-8" title="8">  <span class="kw">foo</span>(x)</a>
-<a class="sourceLine" id="cb10-9" title="9">  </a>
-<a class="sourceLine" id="cb10-10" title="10">  <span class="kw">expect_equal</span>(<span class="kw">foo</span>(x), <span class="kw">foo</span>(<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb10-11" title="11">})</a></code></pre></div>
+<p>For example, if the file <code>R/functions.R</code> contains this
+code (from <a href="https://github.com/mikldk/roxytestdemo">roxytestdemo</a>):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; A function to do w</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @examples </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; x &lt;- 2</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; foo(x)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @testexamples</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; expect_equal(foo(x), foo(2))</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return something</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>foo2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sqrt</span>(x))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Then <code>roxygen2::roxygenise()</code> will generate (with the
+<code>testthat_roclet</code> roclet) the file
+<code>tests/testthat/test-roxytest-testexamples-functions.R</code> with
+this content:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generated by roxytest: Do not edit by hand!</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">context</span>(<span class="st">&quot;File R/functions.R: @testexamples&quot;</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;Function foo2() @ L13&quot;</span>, {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">foo</span>(x)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">foo</span>(x), <span class="fu">foo</span>(<span class="dv">2</span>))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p>Note that:</p>
 <ul>
 <li><code>\dontrun</code>: Everything including content is removed</li>
@@ -437,14 +515,16 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="param-roclet" class="section level3">
 <h3><code>param</code> roclet</h3>
-<p>To demonstrate the <code>param_roclet</code> roclet assume that this block of documentation exists:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">#&#39; Summing two numbers</span></a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb11-3" title="3"><span class="co">#&#39; @param x A number</span></a>
-<a class="sourceLine" id="cb11-4" title="4">foobar &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb11-5" title="5">  x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb11-6" title="6">}</a></code></pre></div>
-<p>When the package is documented, the following output will be displayed:</p>
+<p>To demonstrate the <code>param_roclet</code> roclet assume that this
+block of documentation exists:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Summing two numbers</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>foobar <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>When the package is documented, the following output will be
+displayed:</p>
 <pre><code>Functions with @param inconsistency:
   * Function &#39;foobar&#39; with title &#39;Summing two numbers&#39;: 
     - Missing @param&#39;s: y</code></pre>
@@ -452,31 +532,35 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="return-roclet" class="section level3">
 <h3><code>return</code> roclet</h3>
-<p>To demonstrate the <code>return_roclet</code> roclet assume that this block of documentation exists:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">#&#39; Summing two numbers</span></a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="co">#&#39; @param x A number</span></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb13-5" title="5"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb13-6" title="6">foobar2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb13-7" title="7">  x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb13-8" title="8">}</a></code></pre></div>
-<p>When the package is documented, the following output will be displayed:</p>
+<p>To demonstrate the <code>return_roclet</code> roclet assume that this
+block of documentation exists:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Summing two numbers</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>foobar2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>When the package is documented, the following output will be
+displayed:</p>
 <pre><code>Functions with @export but no @return:
   * Function &#39;foobar2()&#39; with title &#39;Summing two numbers&#39;</code></pre>
 </div>
 <div id="examples-roclet" class="section level3">
 <h3><code>examples</code> roclet</h3>
-<p>To demonstrate the <code>examples_roclet</code> roclet assume that this block of documentation exists:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co">#&#39; Summing two numbers</span></a>
-<a class="sourceLine" id="cb15-2" title="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="co">#&#39; @param x A number</span></a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="co">#&#39; </span></a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="co">#&#39; @export</span></a>
-<a class="sourceLine" id="cb15-6" title="6">foobar2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb15-7" title="7">  x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb15-8" title="8">}</a></code></pre></div>
-<p>When the package is documented, the following output will be displayed:</p>
+<p>To demonstrate the <code>examples_roclet</code> roclet assume that
+this block of documentation exists:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Summing two numbers</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param x A number</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>foobar2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>When the package is documented, the following output will be
+displayed:</p>
 <pre><code>Functions with @export but no @example(s):
   * Function &#39;foobar2()&#39; with title &#39;Summing two numbers&#39;</code></pre>
 </div>

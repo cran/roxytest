@@ -42,7 +42,7 @@ roclet_process.roclet_testthat <- function(x,
   results <- internal_tests_roclet_process(blocks,
                                            indent_code = TRUE,
                                            add_testthat_boilerplate = TRUE,
-                                           add_context_header = TRUE)
+                                           add_context_header = FALSE)
   
   return(results)
 }
@@ -76,7 +76,7 @@ roclet_clean.roclet_testthat <- function(x, base_path) {
   verify_testthat_used()
   
   testfiles <- dir(path = file.path(base_path, "tests", "testthat"), 
-                   pattern = "^test-roxytest-.*\\.R$", 
+                   pattern = "^test-roxytest-.*\\.[Rr]$", 
                    full.names = TRUE)
   
   # Has side-effects: deletes files on disk
